@@ -1,0 +1,29 @@
+[project]
+name = "cognito-mcp"
+version = "0.1.0"
+description = "A Model Context Protocol (MCP) server for AWS Cognito operations"
+authors = [
+    { name = "Your Name", email = "your.email@example.com" }
+]
+dependencies = [
+    "mcp[cli]>=1.6.0",
+    "boto3>=1.37.37",
+    "click>=8.1.8",
+    "pydantic>=2.11.3",
+]
+requires-python = ">=3.13"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+
+
+[tool.ruff]
+line-length = 100
+target-version = "py313" 
