@@ -38,8 +38,6 @@ ENV/
 Dockerfile
 .dockerignore
 
-# Documentation
-README.md
 LICENSE
 
 # Example files

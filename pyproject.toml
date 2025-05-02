@@ -1,29 +1,39 @@
 [project]
-name = "cognito-mcp"
-version = "0.1.0"
-description = "A Model Context Protocol (MCP) server for AWS Cognito operations"
-authors = [
-    { name = "Your Name", email = "your.email@example.com" }
+name = "mcp-server-cognito"
+version = "0.1.1"
+description = "A Model Context Protocol server providing tools to get information about AWS Cognito"
+readme = "README.md"
+requires-python = ">=3.12"
+maintainers = [{ name = "Ryoga Kato", email = "ryoga.kato@gmail.com" }]
+keywords = ["cognito", "mcp", "automation"]
+license = { text = "MIT" }
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
 ]
 dependencies = [
-    "mcp[cli]>=1.6.0",
+    "boto3-stubs[cognito,cognito-idp]>=1.38.5",
     "boto3>=1.37.37",
     "click>=8.1.8",
+    "mcp>=1.6.0",
     "pydantic>=2.11.3",
 ]
-requires-python = ">=3.13"
+
+[project.scripts]
+mcp-server-cognito = "mcp_server_cognito:main"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.hatch.metadata]
-allow-direct-references = true
+[tool.uv]
+dev-dependencies = ["pyright>=1.1.389", "ruff>=0.7.3", "pytest>=8.0.0"]
 
-[tool.hatch.build.targets.wheel]
-packages = ["."]
-
-
-[tool.ruff]
-line-length = 100
-target-version = "py313" 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
